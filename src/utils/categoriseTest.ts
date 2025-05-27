@@ -1,5 +1,4 @@
-type Gender = "male" | "female";
-type Category = "average" | "aboveAverage" | "belowAverage" | "uncategorised";
+import type { Gender, Category } from "../types/types";
 
 /**
  * Determines a category based on the user's test result and gender. Returns uncategorised if the test result does not fall in one of the pre-defined test categories.
