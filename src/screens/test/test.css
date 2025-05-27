@@ -1,0 +1,45 @@
+.testContainer {
+  background-color: #00c0a7;
+  min-height: 100vh;
+  padding: 4rem 3rem;
+  color: white;
+  display: flex;
+  gap: 1.5rem;
+  flex-direction: column;
+}
+
+h1 {
+  font-size: x-large;
+  font-weight: 500;
+}
+
+p {
+  font-size: large;
+}
+
+.score {
+  border-width: 1px 0px;
+  border-style: solid;
+  border-color: #ffffff7a;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+
+.categories {
+  display: flex;
+  flex-direction: column;
+}
+
+.categoryRow {
+  display: flex;
+  padding: 0.5rem 0;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.categoryMiddleRow {
+  border-top: 1px solid #ffffff7a;
+  border-bottom: 1px solid #ffffff7a;
+}
