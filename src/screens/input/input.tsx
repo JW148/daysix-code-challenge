@@ -1,7 +1,7 @@
 import "./input.css";
 import gif from "../../assets/sit_stand.gif";
 import { Pencil } from "lucide-react";
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
 import { EditRepsModal } from "../../components/edit-reps-modal/edit-reps-modal";
 
 export const Input = () => {
@@ -10,8 +10,12 @@ export const Input = () => {
   //separated input val from count val so that the input field can be cleared completely
   const [inputVal, setInputVal] = useState<string>("");
 
-  const handleUpdate = () => {
-    const numValue = inputVal === "" ? 0 : parseInt(inputVal) || 0;
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const formVal = formData.get("count");
+
+    const numValue = formVal === "" ? 0 : parseInt(formVal as string) || 0;
     setCount(numValue);
     setIsModalOpen(false);
   };
@@ -44,16 +48,21 @@ export const Input = () => {
       >
         <div className="form-group">
           <label className="form-label">Count</label>
-          <input
-            type="number"
-            className="form-input"
-            value={inputVal}
-            onChange={(e) => setInputVal(e.target.value)}
-          />
+          <form onSubmit={handleSubmit}>
+            <input
+              id="count"
+              name="count"
+              type="number"
+              className="form-input"
+              min={0}
+              value={inputVal}
+              onChange={(e) => setInputVal(e.target.value)}
+            />
+            <button className="update-btn" type="submit">
+              Update
+            </button>
+          </form>
         </div>
-        <button className="update-btn" onClick={handleUpdate}>
-          Update
-        </button>
       </EditRepsModal>
     </div>
   );
