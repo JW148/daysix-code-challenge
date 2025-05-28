@@ -1,6 +1,6 @@
 import "./input.css";
 import gif from "../../assets/sit_stand.gif";
-import { Pencil } from "lucide-react";
+import { Pencil, X } from "lucide-react";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { Modal } from "../../components/modal/modal";
 import { useResults } from "../../providers/results/use-results";
@@ -66,6 +66,9 @@ export const Input = () => {
 
   return (
     <div className="inputContainer">
+      <button className="backBtn" onClick={() => navigate("/")}>
+        <X color="white" />
+      </button>
       <div className="inputBody">
         <h1>Sit & Stand Test</h1>
         <div className="gifContainer">

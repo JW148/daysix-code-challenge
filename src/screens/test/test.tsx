@@ -40,82 +40,84 @@ export const Test = () => {
 
   return (
     <div className="testContainer">
-      {activeTest ? (
-        <>
-          <h1>Test Results</h1>
-          <p>
-            Hi {name}, great job on doing another a sit stand test. Your result
-            are in.
-          </p>
-        </>
-      ) : (
-        <>
-          <div className="testHeader">
-            <button onClick={() => navigate("/")}>
-              <ChevronLeft size={32} color="white" />
-            </button>
-            <h1>
-              Sit Stant Test{" "}
-              {resultData.id > 9 ? resultData.id : "0" + resultData.id}
-            </h1>
+      <div className="testBody">
+        {activeTest ? (
+          <>
+            <h1>Test Results</h1>
+            <p>
+              Hi {name}, great job on doing another a sit stand test. Your
+              result are in.
+            </p>
+          </>
+        ) : (
+          <>
+            <div className="testHeader">
+              <button onClick={() => navigate("/")}>
+                <ChevronLeft size={32} color="white" />
+              </button>
+              <h1>
+                Sit Stant Test{" "}
+                {resultData.id > 9 ? resultData.id : "0" + resultData.id}
+              </h1>
+            </div>
+            <p>
+              Test Date{" "}
+              {resultData.date.toLocaleDateString("en-GB", {
+                day: "numeric",
+                month: "short",
+                year: "numeric",
+              })}
+            </p>
+          </>
+        )}
+
+        <div className="score">
+          <h1>Repetitions</h1>
+          <h1>{resultData.score}</h1>
+        </div>
+        <div className="categories">
+          <div className="categoryRow">
+            <p>Above Average:</p>
+            <p>Men: &gt;14, Women: &gt;20</p>
           </div>
-          <p>
-            Test Date{" "}
-            {resultData.date.toLocaleDateString("en-GB", {
-              day: "numeric",
-              month: "short",
-              year: "numeric",
-            })}
-          </p>
-        </>
-      )}
+          <div className="categoryRow categoryMiddleRow ">
+            <p>Average:</p>
+            <p>Men: 10-14, Women: 12-19</p>
+          </div>
+          <div className="categoryRow">
+            <p>Below Average:</p>
+            <p>Men &lt;10, Women &lt;8</p>
+          </div>
+        </div>
 
-      <div className="score">
-        <h1>Repetitions</h1>
-        <h1>{resultData.score}</h1>
-      </div>
-      <div className="categories">
-        <div className="categoryRow">
-          <p>Above Average:</p>
-          <p>Men: &gt;14, Women: &gt;20</p>
+        <p className="subheading">How does this compare</p>
+        <p>{feedback.compare}</p>
+        <p className="subheading">New actionable tips</p>
+        <ul>
+          <li>{feedback.tips[0]}</li>
+          {feedback.tips.length > 1 &&
+            showMore &&
+            feedback.tips.slice(1).map((tip, i) => <li key={i}>{tip}</li>)}
+        </ul>
+        <div className="viewMore" onClick={() => setShowMore((prev) => !prev)}>
+          <p>View more</p>
+          <ChevronDown className={showMore ? "flipped" : ""} />
         </div>
-        <div className="categoryRow categoryMiddleRow ">
-          <p>Average:</p>
-          <p>Men: 10-14, Women: 12-19</p>
-        </div>
-        <div className="categoryRow">
-          <p>Below Average:</p>
-          <p>Men &lt;10, Women &lt;8</p>
-        </div>
+        {activeTest ? (
+          <>
+            <button className="tryAgainBtn" onClick={tryAgain}>
+              Try Again
+            </button>
+            <button className="newTestBtn" onClick={submitResult}>
+              Submit Result
+            </button>
+          </>
+        ) : (
+          <Link to={"/input"} className="newTestBtn">
+            <p>Start New Test</p>
+          </Link>
+        )}
       </div>
-
-      <p>How does this compare</p>
-      <p>{feedback.compare}</p>
-      <p>New actionable tips</p>
-      <ul>
-        <li>{feedback.tips[0]}</li>
-        {feedback.tips.length > 1 &&
-          showMore &&
-          feedback.tips.slice(1).map((tip, i) => <li key={i}>{tip}</li>)}
-      </ul>
-      <div className="viewMore" onClick={() => setShowMore((prev) => !prev)}>
-        <p>View more</p>
-        <ChevronDown className={showMore ? "flipped" : ""} />
-      </div>
-      {activeTest ? (
-        <>
-          <button className="tryAgainBtn" onClick={tryAgain}>
-            Try Again
-          </button>
-          <button className="newTestBtn" onClick={submitResult}>
-            Submit Result
-          </button>
-        </>
-      ) : (
-        <Link to={"/input"} className="newTestBtn">
-          <p>Start New Test</p>
-        </Link>
-      )}
     </div>
   );
 };

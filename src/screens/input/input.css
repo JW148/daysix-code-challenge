@@ -160,3 +160,9 @@ button {
 .update-btn:active {
   transform: translateY(1px);
 }
+
+.backBtn {
+  position: fixed;
+  top: 2rem;
+  left: 1rem;
+}
