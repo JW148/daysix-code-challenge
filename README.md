@@ -31,6 +31,12 @@ I followed a feature branch approach. After completing a feature, it's functiona
 - User has the ability to set their name and gender
 - Recategorise results based on selected gender
 
+## TODO
+
+- Add unit tests (e.g., for result categorisation)
+- Integrate local storage to persist test results
+- Improve animation/transitions between steps
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
@@ -85,9 +91,3 @@ export default tseslint.config({
   },
 });
 ```
-
-## TODO
-
-- Add unit tests (e.g., for result categorisation)
-- Integrate local storage to persist test results
-- Improve animation/transitions between steps
