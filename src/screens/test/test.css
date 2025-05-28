@@ -8,6 +8,12 @@
   flex-direction: column;
 }
 
+.testHeader {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
 h1 {
   font-size: x-large;
   font-weight: 500;
@@ -69,4 +75,17 @@ li {
   background-color: white;
   text-decoration: none;
   color: #00c0a7;
+  font-size: large;
+}
+
+.tryAgainBtn {
+  border: 1px solid white;
+  padding: 2rem;
+  border-radius: 1rem;
+  justify-items: center;
+  align-items: center;
+  background-color: white;
+  background: transparent;
+  color: white;
+  font-size: large;
 }

@@ -16,9 +16,10 @@
   /* box-shadow: 1px 1px 10px #888888; */
 }
 
-h1 {
+.inputHeader {
   font-weight: 600;
   font-size: large;
+  color: black;
 }
 
 .addTest {
@@ -37,6 +38,13 @@ h1 {
   gap: 1rem;
   margin-top: 1rem;
   align-items: center;
+}
+
+.settings {
+  display: flex;
+  width: 100%;
+  margin-top: 2rem;
+  justify-content: center;
 }
 
 @media (min-width: 768px) {
