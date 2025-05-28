@@ -1,3 +1,36 @@
+# Submission Details
+
+A simple React app built as part of a coding challenge. The app allows users to perform and log sit-stand tests, view past results, and receive performance-based guidance.
+
+## Project Structure
+
+```
+src/
+|---assets/ # Application assets
+|---components/ # Reusable UI components
+|---data/ # Data used to provide test feedback
+|---screens/ # Route components
+|---fonts/ # Application fonts
+|---providers/ # Context provider to manage application state
+|---types/ # Type definitions
+|---utils/ # utility / helper functions
+```
+
+## Git Workflow
+
+I followed a feature branch approach. After completing a feature, it's functionality was tested before being merged into main.
+
+## Design Considerations
+
+- Mobile first approach with responsive layout to handle desktop viewports gracefully
+- Focused on clean, readable code with reusable components
+- Minimal dependencies (only Lucide Icons)
+
+## Extra Features
+
+- User has the ability to set their name and gender
+- Recategorise results based on selected gender
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
@@ -52,39 +85,6 @@ export default tseslint.config({
   },
 });
 ```
-
-# Submission Details
-
-A simple React app built as part of a coding challenge. The app allows users to perform and log sit-stand tests, view past results, and receive performance-based guidance.
-
-## Project Structure
-
-```
-src/
-|---assets/ # Application assets
-|---components/ # Reusable UI components
-|---data/ # Data used to provide test feedback
-|---screens/ # Route components
-|---fonts/ # Application fonts
-|---providers/ # Context provider to manage application state
-|---types/ # Type definitions
-|---utils/ # utility / helper functions
-```
-
-## Git Workflow
-
-I followed a feature branch approach. After completing a feature, it's functionality was tested before being merged into main.
-
-## Design Considerations
-
-- Mobile first approach with responsive layout to handle desktop viewports gracefully
-- Focused on clean, readable code with reusable components
-- Minimal dependencies (only Lucide Icons)
-
-## Extra Features
-
-- User has the ability to set their name and gender
-- Recategorise results based on selected gender
 
 ## TODO
 
