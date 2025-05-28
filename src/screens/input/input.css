@@ -88,6 +88,13 @@ h1 {
   text-decoration: none;
   color: #00c0a7;
   cursor: pointer;
+  border-style: none;
+}
+
+button {
+  background: transparent;
+  border-style: none;
+  cursor: pointer;
 }
 
 @media (min-width: 768px) {
@@ -99,4 +106,56 @@ h1 {
     width: min(50vw, 50vh);
     height: min(50vw, 50vh);
   }
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 16px;
+  color: #666;
+  font-weight: 500;
+}
+
+.form-input {
+  width: 100%;
+  padding: 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  background: #f8f8f8;
+  box-sizing: border-box;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #5fb3a3;
+  background: white;
+}
+
+.update-btn {
+  width: 100%;
+  background: #00c0a7;
+  color: white;
+  border: none;
+  padding: 1.5rem;
+  border-radius: 12px;
+  font-size: large;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.update-btn:hover {
+  background: #4a9388;
+}
+
+.update-btn:active {
+  transform: translateY(1px);
 }

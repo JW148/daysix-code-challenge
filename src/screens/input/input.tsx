@@ -1,8 +1,21 @@
 import "./input.css";
 import gif from "../../assets/sit_stand.gif";
 import { Pencil } from "lucide-react";
+import { useState } from "react";
+import { EditRepsModal } from "../../components/edit-reps-modal/edit-reps-modal";
 
 export const Input = () => {
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(true);
+  const [count, setCount] = useState<number>(0);
+  //separated input val from count val so that the input field can be cleared completely
+  const [inputVal, setInputVal] = useState<string>("");
+
+  const handleUpdate = () => {
+    const numValue = inputVal === "" ? 0 : parseInt(inputVal) || 0;
+    setCount(numValue);
+    setIsModalOpen(false);
+  };
+
   return (
     <div className="inputContainer">
       <div className="inputBody">
@@ -14,14 +27,34 @@ export const Input = () => {
         <div className="footerContainer">
           <div className="repsCounter">
             <h1 className="repsText">Reps Counter</h1>
-            <h1>10</h1>
-            <Pencil color="white" />
+            <h1>{count}</h1>
+            <button onClick={() => setIsModalOpen(true)}>
+              <Pencil color="white" />
+            </button>
           </div>
-          <div className="endTestBtn">
+          <button className="endTestBtn">
             <p>End Test</p>
-          </div>
+          </button>
         </div>
       </div>
+      <EditRepsModal
+        onClose={() => setIsModalOpen(false)}
+        isOpen={isModalOpen}
+        title="Edit Reps"
+      >
+        <div className="form-group">
+          <label className="form-label">Count</label>
+          <input
+            type="number"
+            className="form-input"
+            value={inputVal}
+            onChange={(e) => setInputVal(e.target.value)}
+          />
+        </div>
+        <button className="update-btn" onClick={handleUpdate}>
+          Update
+        </button>
+      </EditRepsModal>
     </div>
   );
 };
