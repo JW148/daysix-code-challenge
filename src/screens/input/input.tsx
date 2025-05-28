@@ -1,7 +1,7 @@
 import "./input.css";
 import gif from "../../assets/sit_stand.gif";
 import { Pencil } from "lucide-react";
-import { useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { Modal } from "../../components/modal/modal";
 import { useResults } from "../../providers/results/use-results";
 import { categoriseTest } from "../../utils/categoriseTest";
@@ -12,6 +12,33 @@ export const Input = () => {
   const [count, setCount] = useState<number>(0);
   //separated input val from count val so that the input field can be cleared completely
   const [inputVal, setInputVal] = useState<string>("");
+
+  //timer state
+  const [seconds, setSeconds] = useState<number>(0);
+  const [isRunning, setIsRunning] = useState(true);
+  const intervalRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    if (isRunning) {
+      intervalRef.current = setInterval(() => {
+        setSeconds((prev) => {
+          if (prev >= 29) {
+            clearInterval(intervalRef.current!);
+            setIsRunning(false);
+            setIsModalOpen(true);
+            return 30;
+          }
+          return prev + 1;
+        });
+      }, 1000);
+    }
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [isRunning]);
 
   const { setActiveTest, results, gender } = useResults();
 
@@ -43,7 +70,7 @@ export const Input = () => {
         <h1>Sit & Stand Test</h1>
         <div className="gifContainer">
           <img src={gif} alt="Sit stand gif" className="gif" />
-          <h1 className="timer">00:00</h1>
+          <h1 className="timer">00:{seconds < 10 ? "0" + seconds : seconds}</h1>
         </div>
         <div className="footerContainer">
           <div className="repsCounter">
