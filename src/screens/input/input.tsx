@@ -3,12 +3,19 @@ import gif from "../../assets/sit_stand.gif";
 import { Pencil } from "lucide-react";
 import { useState, type FormEvent } from "react";
 import { EditRepsModal } from "../../components/edit-reps-modal/edit-reps-modal";
+import { useResults } from "../../providers/results/use-results";
+import { categoriseTest } from "../../utils/categoriseTest";
+import { useNavigate } from "react-router";
 
 export const Input = () => {
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(true);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [count, setCount] = useState<number>(0);
   //separated input val from count val so that the input field can be cleared completely
   const [inputVal, setInputVal] = useState<string>("");
+
+  const { setActiveTest, results, gender } = useResults();
+
+  const navigate = useNavigate();
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -18,6 +25,16 @@ export const Input = () => {
     const numValue = formVal === "" ? 0 : parseInt(formVal as string) || 0;
     setCount(numValue);
     setIsModalOpen(false);
+  };
+
+  const handleEndTest = () => {
+    setActiveTest({
+      id: results.length + 1,
+      date: new Date(),
+      score: count,
+      category: categoriseTest(count, gender),
+    });
+    navigate("/test");
   };
 
   return (
@@ -36,7 +53,7 @@ export const Input = () => {
               <Pencil color="white" />
             </button>
           </div>
-          <button className="endTestBtn">
+          <button className="endTestBtn" onClick={handleEndTest}>
             <p>End Test</p>
           </button>
         </div>

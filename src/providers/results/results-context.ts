@@ -3,22 +3,10 @@ import type { Test, Gender } from "../../types/types";
 
 export const resultsData: Test[] = [
   {
-    id: 5,
-    date: new Date(),
-    score: 5,
-    category: "belowAverage",
-  },
-  {
-    id: 4,
-    date: new Date("2025-05-25"),
-    score: 9,
-    category: "belowAverage",
-  },
-  {
-    id: 3,
-    date: new Date("2025-05-19"),
-    score: 10,
-    category: "average",
+    id: 1,
+    date: new Date("2025-04-25"),
+    score: 16,
+    category: "aboveAverage",
   },
   {
     id: 2,
@@ -27,10 +15,22 @@ export const resultsData: Test[] = [
     category: "average",
   },
   {
-    id: 1,
-    date: new Date("2025-04-25"),
-    score: 16,
-    category: "aboveAverage",
+    id: 3,
+    date: new Date("2025-05-19"),
+    score: 10,
+    category: "average",
+  },
+  {
+    id: 4,
+    date: new Date("2025-05-27"),
+    score: 9,
+    category: "belowAverage",
+  },
+  {
+    id: 5,
+    date: new Date(),
+    score: 5,
+    category: "belowAverage",
   },
 ];
 
@@ -39,6 +39,8 @@ export const ResultContext = createContext<{
   setResults: (result: Test[]) => void;
   currentResult: number | undefined;
   setCurrentResult: (id: number) => void;
+  activeTest: Test | undefined;
+  setActiveTest: (test: Test | undefined) => void;
   name: string;
   setName: (name: string) => void;
   gender: Gender;
@@ -48,6 +50,8 @@ export const ResultContext = createContext<{
   setResults: () => {},
   currentResult: undefined,
   setCurrentResult: () => {},
+  activeTest: undefined,
+  setActiveTest: () => {},
   name: "Joe",
   setName: () => {},
   gender: "male",

@@ -2,26 +2,68 @@ import type { Test as TestType } from "../../types/types";
 import "./test.css";
 import { testFeedback } from "../../data/data";
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
-import { Link } from "react-router";
+import { ChevronDown, ChevronLeft } from "lucide-react";
+import { Link, useNavigate } from "react-router";
 import { useResults } from "../../providers/results/use-results";
 
 export const Test = () => {
-  const { currentResult, results } = useResults();
-  const resultData = results.find(
-    (result) => result.id === currentResult
-  ) as TestType;
+  const { currentResult, results, activeTest, setActiveTest, setResults } =
+    useResults();
+
+  // Determine if the test being viewed is an active test or an archived test
+  // i.e. if the activeTest is not undefined, it is an active test being viewed and not an archived one
+  const resultData = activeTest
+    ? activeTest
+    : (results.find((result) => result.id === currentResult) as TestType);
 
   const feedback = testFeedback[resultData.category];
-  const [showMore, setShowMore] = useState<boolean>(true);
+  const [showMore, setShowMore] = useState<boolean>(false);
+
+  const navigate = useNavigate();
+
+  const submitResult = () => {
+    setResults([...results, activeTest as TestType]);
+    setActiveTest(undefined);
+    navigate("/");
+  };
+
+  const tryAgain = () => {
+    setActiveTest(undefined);
+    navigate("/input");
+  };
 
   return (
     <div className="testContainer">
-      <h1>Test Results</h1>
-      <p>
-        Hi Jane, great job on doing another a sit stand test. Your result are
-        in.
-      </p>
+      {activeTest ? (
+        <>
+          <h1>Test Results</h1>
+          <p>
+            Hi Jane, great job on doing another a sit stand test. Your result
+            are in.
+          </p>
+        </>
+      ) : (
+        <>
+          <div className="testHeader">
+            <button onClick={() => navigate("/")}>
+              <ChevronLeft size={32} color="white" />
+            </button>
+            <h1>
+              Sit Stant Test{" "}
+              {resultData.id > 9 ? resultData.id : "0" + resultData.id}
+            </h1>
+          </div>
+          <p>
+            Test Date{" "}
+            {resultData.date.toLocaleDateString("en-GB", {
+              day: "numeric",
+              month: "short",
+              year: "numeric",
+            })}
+          </p>
+        </>
+      )}
+
       <div className="score">
         <h1>Repetitions</h1>
         <h1>{resultData.score}</h1>
@@ -54,9 +96,20 @@ export const Test = () => {
         <p>View more</p>
         <ChevronDown className={showMore ? "flipped" : ""} />
       </div>
-      <Link to={"/input"} className="newTestBtn">
-        <p>Start New Test</p>
-      </Link>
+      {activeTest ? (
+        <>
+          <button className="tryAgainBtn" onClick={tryAgain}>
+            Try Again
+          </button>
+          <button className="newTestBtn" onClick={submitResult}>
+            Submit Result
+          </button>
+        </>
+      ) : (
+        <Link to={"/input"} className="newTestBtn">
+          <p>Start New Test</p>
+        </Link>
+      )}
     </div>
   );
 };

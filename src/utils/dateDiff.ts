@@ -19,6 +19,7 @@ export function dateDiff(testDate: Date) {
   //difference in days between the test date and todays date
   const diff = Math.floor((utc1 - utc2) / _MS_PER_DAY);
 
+  if (diff < 1) return "Today";
   if (diff < 2) return "Yesterday";
   if (diff < 31) return diff + " days ago";
   if (diff > 30) return Math.floor(diff / 30) + " month ago";
