@@ -1,10 +1,13 @@
 .testContainer {
   background-color: #00c0a7;
   min-height: 100vh;
+}
+
+.testBody {
   padding: 4rem 3rem;
   color: white;
   display: flex;
-  gap: 1.5rem;
+  gap: 2rem;
   flex-direction: column;
 }
 
@@ -12,6 +15,10 @@
   display: flex;
   flex-direction: row;
   gap: 1rem;
+}
+
+.subheading {
+  font-weight: 700;
 }
 
 h1 {
@@ -61,6 +68,7 @@ p {
 
 li {
   margin: 1rem 0;
+  font-size: large;
 }
 
 .flipped {
@@ -88,4 +96,11 @@ li {
   background: transparent;
   color: white;
   font-size: large;
+}
+
+@media (min-width: 768px) {
+  .testBody {
+    max-width: 50%;
+    margin: 0 auto;
+  }
 }
