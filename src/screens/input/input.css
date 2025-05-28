@@ -1,0 +1,161 @@
+.inputContainer {
+  min-height: 100vh;
+  background-color: #00c0a7;
+}
+
+.inputBody {
+  display: flex;
+  flex-direction: column;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  align-items: center;
+  gap: 2rem;
+}
+
+h1 {
+  font-size: large;
+  color: white;
+}
+
+.gifContainer {
+  width: min(90vw, 90vh);
+  height: min(90vw, 90vh);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border-radius: 50%; /* Ensures it's always a circle */
+  background: radial-gradient(
+    circle at center,
+    #ffffff26 0%,
+    #ffffff26 40%,
+
+    #2ec8ad 40%,
+    #2ec8ad 60%,
+
+    #27c0a6 60%,
+    #27c0a6 80%,
+
+    #00c0a7 80%,
+    #00c0a7 100%
+  );
+}
+
+.gif {
+  max-width: 50%;
+  max-height: 50%;
+}
+
+.timer {
+  position: absolute;
+  font-size: 40px;
+  color: white;
+  text-align: center;
+  bottom: 1.25rem;
+  width: 100%;
+}
+
+.repsCounter {
+  border-top: 1px solid #ffffff7a;
+  border-bottom: 1px solid #ffffff7a;
+  padding: 1rem 0;
+  display: flex;
+  gap: 2rem;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+}
+
+.repsText {
+  flex: 1 1 0%;
+}
+
+.footerContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  width: 100%;
+  padding: 0 3rem;
+}
+
+.endTestBtn {
+  padding: 2rem;
+  border-radius: 1rem;
+  justify-items: center;
+  align-items: center;
+  background-color: white;
+  text-decoration: none;
+  color: #00c0a7;
+  cursor: pointer;
+  border-style: none;
+}
+
+button {
+  background: transparent;
+  border-style: none;
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .inputBody {
+    max-width: 50%;
+    margin: 0 auto;
+  }
+  .gifContainer {
+    width: min(50vw, 50vh);
+    height: min(50vw, 50vh);
+  }
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 16px;
+  color: #666;
+  font-weight: 500;
+}
+
+.form-input {
+  width: 100%;
+  padding: 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  background: #f8f8f8;
+  box-sizing: border-box;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #5fb3a3;
+  background: white;
+}
+
+.update-btn {
+  width: 100%;
+  background: #00c0a7;
+  color: white;
+  border: none;
+  padding: 1.5rem;
+  border-radius: 12px;
+  font-size: large;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.update-btn:hover {
+  background: #4a9388;
+}
+
+.update-btn:active {
+  transform: translateY(1px);
+}
