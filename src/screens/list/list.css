@@ -16,9 +16,10 @@
   /* box-shadow: 1px 1px 10px #888888; */
 }
 
-h1 {
+.inputHeader {
   font-weight: 600;
   font-size: large;
+  color: black;
 }
 
 .addTest {
