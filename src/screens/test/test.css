@@ -1,0 +1,72 @@
+.testContainer {
+  background-color: #00c0a7;
+  min-height: 100vh;
+  padding: 4rem 3rem;
+  color: white;
+  display: flex;
+  gap: 1.5rem;
+  flex-direction: column;
+}
+
+h1 {
+  font-size: x-large;
+  font-weight: 500;
+}
+
+p {
+  font-size: large;
+}
+
+.score {
+  border-width: 1px 0px;
+  border-style: solid;
+  border-color: #ffffff7a;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+
+.categories {
+  display: flex;
+  flex-direction: column;
+}
+
+.categoryRow {
+  display: flex;
+  padding: 1rem 0;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.categoryMiddleRow {
+  border-top: 1px solid #ffffff7a;
+  border-bottom: 1px solid #ffffff7a;
+}
+
+.viewMore {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-items: center;
+  gap: 1rem;
+  cursor: pointer;
+}
+
+li {
+  margin: 1rem 0;
+}
+
+.flipped {
+  transform: rotate(180deg);
+}
+
+.newTestBtn {
+  padding: 2rem;
+  border-radius: 1rem;
+  justify-items: center;
+  align-items: center;
+  background-color: white;
+  text-decoration: none;
+  color: #00c0a7;
+}
