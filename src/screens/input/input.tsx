@@ -2,7 +2,7 @@ import "./input.css";
 import gif from "../../assets/sit_stand.gif";
 import { Pencil } from "lucide-react";
 import { useState, type FormEvent } from "react";
-import { EditRepsModal } from "../../components/edit-reps-modal/edit-reps-modal";
+import { Modal } from "../../components/modal/modal";
 import { useResults } from "../../providers/results/use-results";
 import { categoriseTest } from "../../utils/categoriseTest";
 import { useNavigate } from "react-router";
@@ -58,29 +58,27 @@ export const Input = () => {
           </button>
         </div>
       </div>
-      <EditRepsModal
+      <Modal
         onClose={() => setIsModalOpen(false)}
         isOpen={isModalOpen}
         title="Edit Reps"
       >
-        <div className="form-group">
+        <form className="form-group" onSubmit={handleSubmit}>
           <label className="form-label">Count</label>
-          <form onSubmit={handleSubmit}>
-            <input
-              id="count"
-              name="count"
-              type="number"
-              className="form-input"
-              min={0}
-              value={inputVal}
-              onChange={(e) => setInputVal(e.target.value)}
-            />
-            <button className="update-btn" type="submit">
-              Update
-            </button>
-          </form>
-        </div>
-      </EditRepsModal>
+          <input
+            id="count"
+            name="count"
+            type="number"
+            className="form-input"
+            min={0}
+            value={inputVal}
+            onChange={(e) => setInputVal(e.target.value)}
+          />
+          <button className="update-btn" type="submit">
+            Update
+          </button>
+        </form>
+      </Modal>
     </div>
   );
 };

@@ -7,8 +7,14 @@ import { Link, useNavigate } from "react-router";
 import { useResults } from "../../providers/results/use-results";
 
 export const Test = () => {
-  const { currentResult, results, activeTest, setActiveTest, setResults } =
-    useResults();
+  const {
+    currentResult,
+    results,
+    activeTest,
+    setActiveTest,
+    setResults,
+    name,
+  } = useResults();
 
   // Determine if the test being viewed is an active test or an archived test
   // i.e. if the activeTest is not undefined, it is an active test being viewed and not an archived one
@@ -38,7 +44,7 @@ export const Test = () => {
         <>
           <h1>Test Results</h1>
           <p>
-            Hi Jane, great job on doing another a sit stand test. Your result
+            Hi {name}, great job on doing another a sit stand test. Your result
             are in.
           </p>
         </>

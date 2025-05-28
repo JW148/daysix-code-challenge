@@ -1,6 +1,7 @@
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { ResultContext, resultsData } from "./results-context";
 import type { Test, Gender } from "../../types/types";
+import { categoriseTest } from "../../utils/categoriseTest";
 
 export const ResultsProvider = ({ children }: { children: ReactNode }) => {
   const [results, setResults] = useState<Test[]>(resultsData);
@@ -15,6 +16,18 @@ export const ResultsProvider = ({ children }: { children: ReactNode }) => {
 
   const [name, setName] = useState<string>("Joe");
   const [gender, setGender] = useState<Gender>("male");
+
+  // re-categorise results on gender change
+  useEffect(() => {
+    const recategorisedResults = results.map((result) => {
+      return {
+        ...result,
+        category: categoriseTest(result.score, gender),
+      };
+    });
+    console.log(recategorisedResults);
+    setResults(recategorisedResults);
+  }, [gender]);
 
   return (
     <ResultContext.Provider

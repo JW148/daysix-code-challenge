@@ -1,19 +1,14 @@
 import type { ReactNode, SyntheticEvent } from "react";
-import "./edit-reps-modal.css";
+import "./modal.css";
 
-type EditRepsModalProps = {
+type ModalProps = {
   isOpen: boolean;
   onClose: () => void;
   title: string;
   children?: ReactNode;
 };
 
-export function EditRepsModal({
-  isOpen,
-  onClose,
-  title,
-  children,
-}: EditRepsModalProps) {
+export function Modal({ isOpen, onClose, title, children }: ModalProps) {
   if (!isOpen) return null;
 
   const handleBackdropClick = (e: SyntheticEvent) => {
