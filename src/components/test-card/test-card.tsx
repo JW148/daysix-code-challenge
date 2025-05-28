@@ -2,7 +2,8 @@ import "./test-card.css";
 import type { Category, Test } from "../../types/types";
 import { ChevronRight } from "lucide-react";
 import { dateDiff } from "../../utils/dateDiff";
-import { Link } from "react-router";
+import { useResults } from "../../providers/results/use-results";
+import { useNavigate } from "react-router";
 
 const getCategory = (category: Category) => {
   switch (category) {
@@ -21,6 +22,14 @@ const getCategory = (category: Category) => {
  * Component that is used to show test results
  */
 export function TestCard({ test }: { test: Test }) {
+  const { setCurrentResult } = useResults();
+  const navigate = useNavigate();
+
+  const handleTestClick = () => {
+    setCurrentResult(test.id);
+    navigate("/test");
+  };
+
   return (
     <div className="cardContainer">
       <div className="cardItem">
@@ -35,11 +44,9 @@ export function TestCard({ test }: { test: Test }) {
         <p className="testScore">Score: {test.score}</p>
         <p className={test.category}>{getCategory(test.category)}</p>
       </div>
-      <div className="cardItem endItem">
-        <Link to={`/test/${test.id}`}>
-          <ChevronRight size={36} />
-        </Link>
-      </div>
+      <button className="cardItem endItem" onClick={handleTestClick}>
+        <ChevronRight size={36} />
+      </button>
     </div>
   );
 }

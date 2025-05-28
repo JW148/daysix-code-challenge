@@ -4,16 +4,15 @@ import { testFeedback } from "../../data/data";
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { Link } from "react-router";
-
-const testData: TestType = {
-  id: 1,
-  date: new Date("2025-04-26"),
-  score: 21,
-  category: "belowAverage",
-};
+import { useResults } from "../../providers/results/use-results";
 
 export const Test = () => {
-  const feedback = testFeedback[testData.category];
+  const { currentResult, results } = useResults();
+  const resultData = results.find(
+    (result) => result.id === currentResult
+  ) as TestType;
+
+  const feedback = testFeedback[resultData.category];
   const [showMore, setShowMore] = useState<boolean>(true);
 
   return (
@@ -25,7 +24,7 @@ export const Test = () => {
       </p>
       <div className="score">
         <h1>Repetitions</h1>
-        <h1>{testData.score}</h1>
+        <h1>{resultData.score}</h1>
       </div>
       <div className="categories">
         <div className="categoryRow">
