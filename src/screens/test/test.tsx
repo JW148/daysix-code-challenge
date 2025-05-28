@@ -1,5 +1,9 @@
 import type { Test as TestType } from "../../types/types";
 import "./test.css";
+import { testFeedback } from "../../data/data";
+import { useState } from "react";
+import { ChevronDown } from "lucide-react";
+import { Link } from "react-router";
 
 const testData: TestType = {
   id: 1,
@@ -9,6 +13,9 @@ const testData: TestType = {
 };
 
 export const Test = () => {
+  const feedback = testFeedback[testData.category];
+  const [showMore, setShowMore] = useState<boolean>(true);
+
   return (
     <div className="testContainer">
       <h1>Test Results</h1>
@@ -34,6 +41,23 @@ export const Test = () => {
           <p>Men &lt;10, Women &lt;8</p>
         </div>
       </div>
+
+      <p>How does this compare</p>
+      <p>{feedback.compare}</p>
+      <p>New actionable tips</p>
+      <ul>
+        <li>{feedback.tips[0]}</li>
+        {feedback.tips.length > 1 &&
+          showMore &&
+          feedback.tips.slice(1).map((tip, i) => <li key={i}>{tip}</li>)}
+      </ul>
+      <div className="viewMore" onClick={() => setShowMore((prev) => !prev)}>
+        <p>View more</p>
+        <ChevronDown className={showMore ? "flipped" : ""} />
+      </div>
+      <Link to={"/input"} className="newTestBtn">
+        <p>Start New Test</p>
+      </Link>
     </div>
   );
 };

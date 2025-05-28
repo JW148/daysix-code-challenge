@@ -34,7 +34,7 @@ p {
 
 .categoryRow {
   display: flex;
-  padding: 0.5rem 0;
+  padding: 1rem 0;
   flex-direction: row;
   justify-content: space-between;
 }
@@ -42,4 +42,31 @@ p {
 .categoryMiddleRow {
   border-top: 1px solid #ffffff7a;
   border-bottom: 1px solid #ffffff7a;
+}
+
+.viewMore {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-items: center;
+  gap: 1rem;
+  cursor: pointer;
+}
+
+li {
+  margin: 1rem 0;
+}
+
+.flipped {
+  transform: rotate(180deg);
+}
+
+.newTestBtn {
+  padding: 2rem;
+  border-radius: 1rem;
+  justify-items: center;
+  align-items: center;
+  background-color: white;
+  text-decoration: none;
+  color: #00c0a7;
 }
