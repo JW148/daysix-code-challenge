@@ -5,9 +5,9 @@ import type { Test, Gender } from "../../types/types";
 export const ResultsProvider = ({ children }: { children: ReactNode }) => {
   const [results, setResults] = useState<Test[]>(resultsData);
 
-  // state responsible for viewing selected result
+  // state responsible for viewing selected result. Initialised to the latest test
   const [currentResult, setCurrentResult] = useState<number | undefined>(
-    undefined
+    results.length
   );
 
   // state responsible for handling active test result
