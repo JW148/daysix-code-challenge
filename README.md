@@ -59,6 +59,7 @@ A simple React app built as part of a coding challenge. The app allows users to 
 
 ## Project Structure
 
+```
 src/
 |---assets/ # Application assets
 |---components/ # Reusable UI components
@@ -68,6 +69,7 @@ src/
 |---providers/ # Context provider to manage application state
 |---types/ # Type definitions
 |---utils/ # utility / helper functions
+```
 
 ## Git Workflow
 
