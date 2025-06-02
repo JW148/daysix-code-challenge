@@ -56,7 +56,7 @@ export const Input = () => {
 
   const handleEndTest = () => {
     setActiveTest({
-      id: results.length + 1,
+      id: (results?.length ?? 0) + 1,
       date: new Date(),
       score: count,
       category: categoriseTest(count, gender),

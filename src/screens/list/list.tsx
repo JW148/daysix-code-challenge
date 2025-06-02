@@ -38,12 +38,14 @@ export const List = () => {
         </button>
       </div>
       <div className="cardTestContainer container ">
-        {results
-          .slice(0)
-          .reverse()
-          .map((test) => (
-            <TestCard test={test} key={test.id} />
-          ))}
+        {results ? (
+          results
+            .slice(0)
+            .reverse()
+            .map((test) => <TestCard test={test} key={test.id} />)
+        ) : (
+          <p className="noResults">No recorded results</p>
+        )}
       </div>
       <div className="settings">
         <button onClick={() => setShowModal(true)}>
