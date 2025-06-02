@@ -35,7 +35,7 @@ export const resultsData: Test[] = [
 ];
 
 export const ResultContext = createContext<{
-  results: Test[];
+  results: Test[] | undefined;
   setResults: (result: Test[]) => void;
   currentResult: number | undefined;
   setCurrentResult: (id: number) => void;

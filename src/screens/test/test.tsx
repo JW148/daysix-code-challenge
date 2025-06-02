@@ -2,7 +2,7 @@ import type { Test as TestType } from "../../types/types";
 import "./test.css";
 import { testFeedback } from "../../data/data";
 import { useState } from "react";
-import { ChevronDown, ChevronLeft } from "lucide-react";
+import { ArrowLeft, ChevronDown, ChevronLeft } from "lucide-react";
 import { Link, useNavigate } from "react-router";
 import { useResults } from "../../providers/results/use-results";
 
@@ -16,19 +16,31 @@ export const Test = () => {
     name,
   } = useResults();
 
+  const [showMore, setShowMore] = useState<boolean>(false);
+  const navigate = useNavigate();
+
+  //Return early if there are no results
+  if (!currentResult && !activeTest)
+    return (
+      <div className="testContainer noResultContainer">
+        <h1>No test to view</h1>
+        <div className="back" onClick={() => navigate("/")}>
+          <ArrowLeft color="white" />
+          <p>Back</p>
+        </div>
+      </div>
+    );
+
   // Determine if the test being viewed is an active test or an archived test
   // i.e. if the activeTest is not undefined, it is an active test being viewed and not an archived one
   const resultData = activeTest
     ? activeTest
-    : (results.find((result) => result.id === currentResult) as TestType);
+    : (results?.find((result) => result.id === currentResult) as TestType);
 
   const feedback = testFeedback[resultData.category];
-  const [showMore, setShowMore] = useState<boolean>(false);
-
-  const navigate = useNavigate();
 
   const submitResult = () => {
-    setResults([...results, activeTest as TestType]);
+    setResults([...(results ?? []), activeTest as TestType]);
     setActiveTest(undefined);
     navigate("/");
   };
